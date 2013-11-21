@@ -4,14 +4,17 @@ import sys
 from setuptools import setup, find_packages
 
 if sys.version_info[0] == 2:
-    requires = ['python-dateutil>=1.0, <2.0']
+    if sys.version_info[1] >= 7:
+        requires = ['python-dateutil>=2.0']
+    else:
+        requires = ['python-dateutil>=1.0, <2.0']
 else:
     # Py3k
     requires = ['python-dateutil>=2.0']
 
 setup(
     name='freezegun',
-    version='0.1.8',
+    version='0.1.9',
     description='Let your Python tests travel through time',
     author='Steve Pulec',
     author_email='spulec@gmail',
